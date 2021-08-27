@@ -47,7 +47,6 @@ function clock() {
     ctx.beginPath();
     ctx.moveTo(0, 0);
     ctx.lineTo(0, -100);
-    ctx.fill();
     ctx.stroke();
     ctx.closePath();
     ctx.restore();
@@ -64,7 +63,6 @@ function clock() {
     ctx.beginPath();
     ctx.moveTo(0, 0);
     ctx.lineTo(0, -200);
-    ctx.fill();
     ctx.stroke();
     ctx.closePath();
     ctx.restore();
@@ -77,7 +75,6 @@ function clock() {
     ctx.beginPath();
     ctx.moveTo(0, 0);
     ctx.lineTo(0, -300);
-    ctx.fill();
     ctx.stroke();
     ctx.closePath();
     ctx.restore();
