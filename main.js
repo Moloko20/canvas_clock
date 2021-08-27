@@ -34,17 +34,6 @@ function clock() {
 
     ctx.translate(canvasMiddleX, canvasMiddleY);
 
-    //central_circle
-    ctx.save();
-    ctx.fillStyle = 'red';
-    ctx.lineWidth = 5;
-    ctx.beginPath();
-    ctx.arc(0, 0, 10, 0, 2 * Math.PI);
-    ctx.fill();
-    ctx.stroke();
-    ctx.closePath();
-    ctx.restore();
-
     //hour_hand
     ctx.save();
     ctx.strokeStyle = 'black';
@@ -88,6 +77,17 @@ function clock() {
     ctx.beginPath();
     ctx.moveTo(0, 0);
     ctx.lineTo(0, -300);
+    ctx.fill();
+    ctx.stroke();
+    ctx.closePath();
+    ctx.restore();
+
+    //central_circle
+    ctx.save();
+    ctx.fillStyle = 'red';
+    ctx.lineWidth = 5;
+    ctx.beginPath();
+    ctx.arc(0, 0, 10, 0, 2 * Math.PI);
     ctx.fill();
     ctx.stroke();
     ctx.closePath();
