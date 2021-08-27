@@ -51,7 +51,7 @@ function clock() {
     ctx.rotate(
         hour * (Math.PI / 6) +
             minute * (Math.PI / 360) +
-            second * (Math.PI / 10800)
+            second * (Math.PI / 21600)
     ); //5 * 6
     ctx.beginPath();
     ctx.moveTo(0, 0);
