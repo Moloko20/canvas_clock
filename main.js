@@ -24,10 +24,11 @@ function clock() {
 
     canvasSetSize();
 
-    const canvasMiddleX = Math.round(ctx.canvas.clientWidth / 2);
-    const canvasMiddleY = Math.round(ctx.canvas.clientHeight / 2);
-
-    ctx.translate(canvasMiddleX, canvasMiddleY);
+    ctx.save();
+    ctx.translate(
+        Math.round(ctx.canvas.clientWidth / 2),
+        Math.round(ctx.canvas.clientHeight / 2)
+    );
 
     //hour_hand
     ctx.save();
@@ -86,6 +87,28 @@ function clock() {
     ctx.fill();
     ctx.stroke();
     ctx.closePath();
+    ctx.restore();
+
+    ctx.save();
+    for (let i = 0; i < 12; i++) {
+        ctx.strokeStyle = 'black';
+        ctx.lineWidth = 2;
+        ctx.rotate(Math.PI / 6);
+        ctx.beginPath();
+        ctx.moveTo(0, 290);
+        ctx.lineTo(0, 300);
+        ctx.stroke();
+        ctx.closePath();
+    }
+    ctx.restore();
+
+    ctx.save();
+    for (let i = 0; i < 12; i++) {
+        ctx.beginPath();
+        ctx.font = '48px serif';
+        ctx.fillText(i, 10, 50);
+        ctx.closePath();
+    }
     ctx.restore();
 
     window.addEventListener('resize', canvasSetSize);
