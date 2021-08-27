@@ -26,19 +26,17 @@ function clock() {
 
     canvasSetSize();
 
+    const canvasMiddleX = Math.round(ctx.canvas.clientWidth / 2);
+    const canvasMiddleY = Math.round(ctx.canvas.clientHeight / 2);
+
+    ctx.translate(canvasMiddleX, canvasMiddleY);
+
     //central_circle
     ctx.save();
-    ctx.beginPath();
     ctx.fillStyle = 'red';
-    ctx.strokeStyle = 'black';
     ctx.lineWidth = 5;
-    ctx.arc(
-        Math.round(ctx.canvas.clientWidth / 2),
-        Math.round(ctx.canvas.clientHeight / 2),
-        10,
-        0,
-        2 * Math.PI
-    );
+    ctx.beginPath();
+    ctx.arc(0, 0, 10, 0, 2 * Math.PI);
     ctx.fill();
     ctx.stroke();
     ctx.closePath();
@@ -46,16 +44,11 @@ function clock() {
 
     //hour_hand
     ctx.save();
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 7;
     ctx.beginPath();
-    ctx.fillStyle = 'black';
-    ctx.lineWidth = 5;
-    ctx.textAlign = 'center';
-    ctx.fillRect(
-        Math.round(ctx.canvas.clientWidth / 2) - 3.5,
-        Math.round(ctx.canvas.clientHeight / 2) + 3.5,
-        7,
-        -200
-    );
+    ctx.moveTo(0, 0);
+    ctx.lineTo(100, 0);
     ctx.fill();
     ctx.stroke();
     ctx.closePath();
@@ -63,16 +56,11 @@ function clock() {
 
     //minute_hand
     ctx.save();
-    ctx.beginPath();
-    ctx.fillStyle = 'blue';
+    ctx.strokeStyle = 'blue';
     ctx.lineWidth = 5;
-    ctx.textAlign = 'center';
-    ctx.fillRect(
-        Math.round(ctx.canvas.clientWidth / 2) - 2.5,
-        Math.round(ctx.canvas.clientHeight / 2) + 2.5,
-        5,
-        -270
-    );
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.lineTo(200, 0);
     ctx.fill();
     ctx.stroke();
     ctx.closePath();
@@ -81,23 +69,18 @@ function clock() {
     //second_hand
     ctx.save();
     ctx.beginPath();
-    ctx.fillStyle = 'red';
-    ctx.lineWidth = 5;
-    ctx.textAlign = 'center';
-    ctx.fillRect(
-        Math.round(ctx.canvas.clientWidth / 2) - 1.5,
-        Math.round(ctx.canvas.clientHeight / 2) + 1.5,
-        3,
-        -320
-    );
+    ctx.strokeStyle = 'red';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.lineTo(300, 0);
     ctx.fill();
     ctx.stroke();
     ctx.closePath();
     ctx.restore();
 
-    setInterval(() => {}, 1000);
-
     window.addEventListener('resize', canvasSetSize);
+
     window.requestAnimationFrame(clock);
 }
 
