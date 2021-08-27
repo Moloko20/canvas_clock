@@ -48,7 +48,7 @@ function clock() {
     ctx.lineWidth = 7;
     ctx.beginPath();
     ctx.moveTo(0, 0);
-    ctx.lineTo(100, 0);
+    ctx.lineTo(0, -100);
     ctx.fill();
     ctx.stroke();
     ctx.closePath();
@@ -60,7 +60,7 @@ function clock() {
     ctx.lineWidth = 5;
     ctx.beginPath();
     ctx.moveTo(0, 0);
-    ctx.lineTo(200, 0);
+    ctx.lineTo(0, -200);
     ctx.fill();
     ctx.stroke();
     ctx.closePath();
@@ -68,12 +68,12 @@ function clock() {
 
     //second_hand
     ctx.save();
-    ctx.beginPath();
     ctx.strokeStyle = 'red';
     ctx.lineWidth = 2;
+    // ctx.rotate(second * (Math.PI / 180));
     ctx.beginPath();
     ctx.moveTo(0, 0);
-    ctx.lineTo(300, 0);
+    ctx.lineTo(0, -300);
     ctx.fill();
     ctx.stroke();
     ctx.closePath();
@@ -85,39 +85,3 @@ function clock() {
 }
 
 window.requestAnimationFrame(clock);
-
-// ctx.beginPath()
-// ctx.fillStyle = 'blue'
-// ctx.arc(300, 300, 50, 0, 2 * Math.PI)
-// ctx.fill()
-// ctx.closePath()
-
-// ctx.beginPath()
-// ctx.fillStyle = 'red'
-// ctx.arc(600, 600, 50, 0, 2 * Math.PI)
-// ctx.fill()
-// ctx.closePath()
-
-// ctx.beginPath();
-// ctx.fillStyle = 'black';
-// ctx.moveTo(200, 200);
-// ctx.lineTo(300, 300);
-// ctx.lineTo(400, 300);
-// ctx.lineTo(400, 100);
-// ctx.lineTo(200, 200);
-// ctx.fill();
-// ctx.closePath();
-
-// const canvasMiddleY = Math.round(ctx.canvas.clientHeight / 2)
-
-// ctx.moveTo(0, canvasMiddleY)
-// ctx.quadraticCurveTo(
-//     //
-//     600,
-//     100,
-//     //
-//     ctx.canvas.clientWidth,
-//     canvasMiddleY,
-// )
-
-// ctx.stroke()
