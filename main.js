@@ -7,7 +7,9 @@ function clock() {
     let minute = date.getMinutes();
     let second = date.getSeconds();
 
-    hour = hour > 12 ? hour - 12 : hour;
+    if (hour > 12) {
+        hour -= 12;
+    }
 
     // console.log(hour, minute, second);
 
