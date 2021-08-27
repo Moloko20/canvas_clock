@@ -1,6 +1,11 @@
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
+let date = new Date();
+let hour = date.getHours();
+let minute = date.getMinutes();
+let second = date.getSeconds();
+
 function canvasSetSize() {
     const width = window.innerWidth;
     const height = window.innerHeight;
@@ -16,9 +21,8 @@ function canvasSetSize() {
 
 canvasSetSize();
 
-window.addEventListener('resize', canvasSetSize);
-
 //central_circle
+ctx.save();
 ctx.beginPath();
 ctx.fillStyle = 'red';
 ctx.strokeStyle = 'black';
@@ -33,8 +37,10 @@ ctx.arc(
 ctx.fill();
 ctx.stroke();
 ctx.closePath();
+ctx.restore();
 
 //hour_hand
+ctx.save();
 ctx.beginPath();
 ctx.fillStyle = 'black';
 ctx.lineWidth = 5;
@@ -48,8 +54,10 @@ ctx.fillRect(
 ctx.fill();
 ctx.stroke();
 ctx.closePath();
+ctx.restore();
 
 //minute_hand
+ctx.save();
 ctx.beginPath();
 ctx.fillStyle = 'blue';
 ctx.lineWidth = 5;
@@ -63,8 +71,10 @@ ctx.fillRect(
 ctx.fill();
 ctx.stroke();
 ctx.closePath();
+ctx.restore();
 
 //second_hand
+ctx.save();
 ctx.beginPath();
 ctx.fillStyle = 'red';
 ctx.lineWidth = 5;
@@ -78,6 +88,11 @@ ctx.fillRect(
 ctx.fill();
 ctx.stroke();
 ctx.closePath();
+ctx.restore();
+
+setInterval(() => {}, 1000);
+
+window.addEventListener('resize', canvasSetSize);
 
 // ctx.beginPath()
 // ctx.fillStyle = 'blue'
