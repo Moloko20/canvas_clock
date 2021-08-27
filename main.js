@@ -12,8 +12,6 @@ function clock() {
         hour -= 12;
     }
 
-    // console.log(hour, minute, second);
-
     function canvasSetSize() {
         const width = window.innerWidth;
         const height = window.innerHeight;
@@ -43,7 +41,7 @@ function clock() {
             minute * (Math.PI / 360) +
             second * (Math.PI / 21600) +
             ms * (Math.PI / (21600 * 1000))
-    ); //5 * 6
+    );
     ctx.beginPath();
     ctx.moveTo(0, 0);
     ctx.lineTo(0, -100);
@@ -59,7 +57,7 @@ function clock() {
         minute * (Math.PI / 30) +
             second * (Math.PI / 1800) +
             ms * (Math.PI / (1800 * 1000))
-    ); //60 * 6
+    );
     ctx.beginPath();
     ctx.moveTo(0, 0);
     ctx.lineTo(0, -200);
@@ -71,7 +69,7 @@ function clock() {
     ctx.save();
     ctx.strokeStyle = 'red';
     ctx.lineWidth = 2;
-    ctx.rotate(second * (Math.PI / 30) + ms * (Math.PI / 30000)); //60 * 6
+    ctx.rotate(second * (Math.PI / 30) + ms * (Math.PI / 30000));
     ctx.beginPath();
     ctx.moveTo(0, 0);
     ctx.lineTo(0, -300);
