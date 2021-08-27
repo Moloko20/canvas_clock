@@ -4,9 +4,6 @@ function clock() {
 
     let date = new Date();
     let hour = date.getHours();
-    let minute = date.getMinutes();
-    let second = date.getSeconds();
-    let ms = date.getMilliseconds();
 
     if (hour > 12) {
         hour -= 12;
@@ -38,9 +35,9 @@ function clock() {
     ctx.lineWidth = 7;
     ctx.rotate(
         hour * (Math.PI / 6) +
-            minute * (Math.PI / 360) +
-            second * (Math.PI / 21600) +
-            ms * (Math.PI / (21600 * 1000))
+            date.getMinutes() * (Math.PI / 360) +
+            date.getSeconds() * (Math.PI / 21600) +
+            date.getMilliseconds() * (Math.PI / (21600 * 1000))
     );
     ctx.beginPath();
     ctx.moveTo(0, 0);
@@ -54,9 +51,9 @@ function clock() {
     ctx.strokeStyle = 'blue';
     ctx.lineWidth = 5;
     ctx.rotate(
-        minute * (Math.PI / 30) +
-            second * (Math.PI / 1800) +
-            ms * (Math.PI / (1800 * 1000))
+        date.getMinutes() * (Math.PI / 30) +
+            date.getSeconds() * (Math.PI / 1800) +
+            date.getMilliseconds() * (Math.PI / (1800 * 1000))
     );
     ctx.beginPath();
     ctx.moveTo(0, 0);
@@ -69,7 +66,10 @@ function clock() {
     ctx.save();
     ctx.strokeStyle = 'red';
     ctx.lineWidth = 2;
-    ctx.rotate(second * (Math.PI / 30) + ms * (Math.PI / 30000));
+    ctx.rotate(
+        date.getSeconds() * (Math.PI / 30) +
+            date.getMilliseconds() * (Math.PI / 30000)
+    );
     ctx.beginPath();
     ctx.moveTo(0, 0);
     ctx.lineTo(0, -300);
