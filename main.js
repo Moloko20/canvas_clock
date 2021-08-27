@@ -48,6 +48,7 @@ function clock() {
     ctx.save();
     ctx.strokeStyle = 'black';
     ctx.lineWidth = 7;
+    ctx.rotate(hour * (Math.PI / 6)); //5 * 6
     ctx.beginPath();
     ctx.moveTo(0, 0);
     ctx.lineTo(0, -100);
@@ -60,6 +61,7 @@ function clock() {
     ctx.save();
     ctx.strokeStyle = 'blue';
     ctx.lineWidth = 5;
+    ctx.rotate(minute * (Math.PI / 30)); //60 * 6
     ctx.beginPath();
     ctx.moveTo(0, 0);
     ctx.lineTo(0, -200);
@@ -72,7 +74,7 @@ function clock() {
     ctx.save();
     ctx.strokeStyle = 'red';
     ctx.lineWidth = 2;
-    // ctx.rotate(second * (Math.PI / 180));
+    ctx.rotate(second * (Math.PI / 30)); //60 * 6
     ctx.beginPath();
     ctx.moveTo(0, 0);
     ctx.lineTo(0, -300);
