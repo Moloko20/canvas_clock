@@ -14,17 +14,70 @@ function canvasSetSize() {
     ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
 }
 
-const canvasMiddleX = Math.round(ctx.canvas.clientWidth * 0.5);
-const canvasMiddleY = Math.round(ctx.canvas.clientHeight * 0.5);
-
 canvasSetSize();
 
 window.addEventListener('resize', canvasSetSize);
 
-console.log(Math.round(ctx.canvas.clientWidth * 0.5), canvasMiddleY);
+//central_circle
+ctx.beginPath();
 ctx.fillStyle = 'red';
-ctx.arc(canvasMiddleX, canvasMiddleY, 30, 0, 2 * Math.PI);
+ctx.strokeStyle = 'black';
+ctx.lineWidth = 5;
+ctx.arc(
+    Math.round(ctx.canvas.clientWidth / 2),
+    Math.round(ctx.canvas.clientHeight / 2),
+    10,
+    0,
+    2 * Math.PI
+);
 ctx.fill();
+ctx.stroke();
+ctx.closePath();
+
+//hour_hand
+ctx.beginPath();
+ctx.fillStyle = 'black';
+ctx.lineWidth = 5;
+ctx.textAlign = 'center';
+ctx.fillRect(
+    Math.round(ctx.canvas.clientWidth / 2) - 3.5,
+    Math.round(ctx.canvas.clientHeight / 2) + 3.5,
+    7,
+    -200
+);
+ctx.fill();
+ctx.stroke();
+ctx.closePath();
+
+//minute_hand
+ctx.beginPath();
+ctx.fillStyle = 'blue';
+ctx.lineWidth = 5;
+ctx.textAlign = 'center';
+ctx.fillRect(
+    Math.round(ctx.canvas.clientWidth / 2) - 2.5,
+    Math.round(ctx.canvas.clientHeight / 2) + 2.5,
+    5,
+    -270
+);
+ctx.fill();
+ctx.stroke();
+ctx.closePath();
+
+//second_hand
+ctx.beginPath();
+ctx.fillStyle = 'red';
+ctx.lineWidth = 5;
+ctx.textAlign = 'center';
+ctx.fillRect(
+    Math.round(ctx.canvas.clientWidth / 2) - 1.5,
+    Math.round(ctx.canvas.clientHeight / 2) + 1.5,
+    3,
+    -320
+);
+ctx.fill();
+ctx.stroke();
+ctx.closePath();
 
 // ctx.beginPath()
 // ctx.fillStyle = 'blue'
