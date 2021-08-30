@@ -1,11 +1,3 @@
-function debounce(callback, delay) {
-    let timeout;
-    return function () {
-        clearTimeout(timeout);
-        timeout = setTimeout(callback, delay);
-    };
-}
-
 function clock() {
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
@@ -88,6 +80,7 @@ function clock() {
     ctx.closePath();
     ctx.restore();
 
+    //dial
     ctx.save();
     for (let i = 0; i < 12; i++) {
         ctx.strokeStyle = 'black';
@@ -116,7 +109,7 @@ function clock() {
     }
     ctx.restore();
 
-    window.addEventListener('resize', debounce(canvasSetSize, 1000, false));
+    window.addEventListener('resize', canvasSetSize);
 
     window.requestAnimationFrame(clock);
 }
