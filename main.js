@@ -12,6 +12,12 @@ function canvasSetSize() {
     ctx.canvas.style.height = height + 'px';
 
     ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+
+    ctx.save();
+    ctx.translate(
+        Math.round(ctx.canvas.clientWidth / 2),
+        Math.round(ctx.canvas.clientHeight / 2)
+    );
 }
 
 function clock() {
@@ -26,12 +32,6 @@ function clock() {
     }
 
     canvasSetSize();
-
-    ctx.save();
-    ctx.translate(
-        Math.round(ctx.canvas.clientWidth / 2),
-        Math.round(ctx.canvas.clientHeight / 2)
-    );
 
     //hour_hand
     ctx.save();
@@ -109,9 +109,8 @@ function clock() {
     }
     ctx.restore();
 
-    ctx.save();
     window.requestAnimationFrame(clock);
-    window.addEventListener('resize', canvasSetSize);
 }
 
 window.requestAnimationFrame(clock);
+window.addEventListener('resize', canvasSetSize);
