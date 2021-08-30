@@ -64,7 +64,7 @@ function clock() {
     ctx.rotate(second + ms / 30);
     ctx.beginPath();
     ctx.moveTo(0, 0);
-    ctx.lineTo(0, -300);
+    ctx.lineTo(0, -260);
     ctx.stroke();
     ctx.closePath();
     ctx.restore();
@@ -86,18 +86,24 @@ function clock() {
         ctx.lineWidth = 2;
         ctx.rotate(Math.PI / 6);
         ctx.beginPath();
-        ctx.moveTo(0, 290);
-        ctx.lineTo(0, 300);
+        ctx.moveTo(0, 250);
+        ctx.lineTo(0, 260);
         ctx.stroke();
         ctx.closePath();
     }
     ctx.restore();
 
     ctx.save();
-    for (let i = 0; i < 12; i++) {
+    for (let i = 1; i <= 12; i++) {
         ctx.beginPath();
-        ctx.font = '48px serif';
-        ctx.fillText(i, 10, 50);
+        ctx.font = '36px serif';
+        let xText = 300 * Math.cos(30 * i * (Math.PI / 180) + Math.PI / -2);
+        let yText = 300 * Math.sin(30 * i * (Math.PI / 180) + Math.PI / -2);
+        if (i <= 9) {
+            ctx.fillText(i, xText - 10, yText + 14);
+        } else {
+            ctx.fillText(i, xText - 17, yText + 20);
+        }
         ctx.closePath();
     }
     ctx.restore();
