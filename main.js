@@ -1,7 +1,20 @@
-function clock() {
-    const canvas = document.getElementById('canvas');
-    const ctx = canvas.getContext('2d');
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
 
+function canvasSetSize() {
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    ctx.canvas.width = width * window.devicePixelRatio;
+    ctx.canvas.height = height * window.devicePixelRatio;
+
+    ctx.canvas.style.width = width + 'px';
+    ctx.canvas.style.height = height + 'px';
+
+    ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+}
+
+function clock() {
     let date = new Date();
     let hour = date.getHours() * (Math.PI / 6);
     let minute = date.getMinutes() * (Math.PI / 30);
@@ -10,19 +23,6 @@ function clock() {
 
     if (hour > 12) {
         hour -= 12;
-    }
-
-    function canvasSetSize() {
-        const width = window.innerWidth;
-        const height = window.innerHeight;
-
-        ctx.canvas.width = width * window.devicePixelRatio;
-        ctx.canvas.height = height * window.devicePixelRatio;
-
-        ctx.canvas.style.width = width + 'px';
-        ctx.canvas.style.height = height + 'px';
-
-        ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
     }
 
     canvasSetSize();
