@@ -1,3 +1,11 @@
+function debounce(callback, delay) {
+    let timeout;
+    return function () {
+        clearTimeout(timeout);
+        timeout = setTimeout(callback, delay);
+    };
+}
+
 function clock() {
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
@@ -23,15 +31,15 @@ function clock() {
         ctx.canvas.style.height = height + 'px';
 
         ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+
+        ctx.save();
+        ctx.translate(
+            Math.round(ctx.canvas.clientWidth / 2),
+            Math.round(ctx.canvas.clientHeight / 2)
+        );
     }
 
     canvasSetSize();
-
-    ctx.save();
-    ctx.translate(
-        Math.round(ctx.canvas.clientWidth / 2),
-        Math.round(ctx.canvas.clientHeight / 2)
-    );
 
     //hour_hand
     ctx.save();
@@ -108,7 +116,7 @@ function clock() {
     }
     ctx.restore();
 
-    window.addEventListener('resize', canvasSetSize);
+    window.addEventListener('resize', debounce(canvasSetSize, 1000, false));
 
     window.requestAnimationFrame(clock);
 }
