@@ -50,7 +50,8 @@ function clock() {
     //clone_hour_hand
     for (let i = 0; i < 3; i++) {
         ctx.beginPath();
-        ctx.strokeStyle = 'rgb(163, 163, 163)';
+        ctx.strokeStyle = 'rgba(187, 187, 187)';
+        ctx.lineCap = 'butt';
         ctx.lineWidth = 2;
         switch (i) {
             case 0:
@@ -79,7 +80,8 @@ function clock() {
     //clone_minute_hand
     for (let i = 0; i < 3; i++) {
         ctx.beginPath();
-        ctx.strokeStyle = 'rgb(163, 163, 163)';
+        ctx.strokeStyle = 'rgba(187, 187, 187)';
+        ctx.lineCap = 'butt';
         ctx.lineWidth = 2;
         switch (i) {
             case 0:
@@ -111,6 +113,7 @@ function clock() {
     for (let i = 0; i < 3; i++) {
         ctx.beginPath();
         ctx.strokeStyle = 'rgba(187, 187, 187)';
+        ctx.lineCap = 'butt';
         ctx.lineWidth = 2;
         switch (i) {
             case 0:
@@ -138,7 +141,8 @@ function clock() {
     //hour_hand
     ctx.beginPath();
     ctx.strokeStyle = 'black';
-    ctx.lineWidth = 7;
+    ctx.lineCap = 'round';
+    ctx.lineWidth = 6;
     ctx.moveTo(0, 0);
     ctx.lineTo(hourX, hourY);
     ctx.stroke();
@@ -147,7 +151,7 @@ function clock() {
     //minute_hand
     ctx.beginPath();
     ctx.strokeStyle = 'black';
-    ctx.lineWidth = 5;
+    ctx.lineWidth = 4;
     ctx.moveTo(0, 0);
     ctx.lineTo(minuteX, minuteY);
     ctx.stroke();
@@ -168,15 +172,6 @@ function clock() {
     ctx.strokeStyle = 'black';
     ctx.lineWidth = 5;
     ctx.arc(0, 0, 10, 0, 2 * Math.PI);
-    ctx.fill();
-    ctx.stroke();
-    ctx.closePath();
-
-    ctx.beginPath();
-    ctx.fillStyle = 'transparent';
-    ctx.strokeStyle = 'black';
-    ctx.lineWidth = 1;
-    ctx.arc(0, 0, 260, 0, 2 * Math.PI);
     ctx.fill();
     ctx.stroke();
     ctx.closePath();
