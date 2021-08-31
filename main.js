@@ -47,15 +47,6 @@ function clock() {
         ctx.canvas.height
     );
 
-    //hour_hand
-    ctx.beginPath();
-    ctx.strokeStyle = 'black';
-    ctx.lineWidth = 7;
-    ctx.moveTo(0, 0);
-    ctx.lineTo(hourX, hourY);
-    ctx.stroke();
-    ctx.closePath();
-
     //clone_hour_hand
     for (let i = 0; i < 3; i++) {
         ctx.beginPath();
@@ -84,15 +75,6 @@ function clock() {
         ctx.stroke();
         ctx.closePath();
     }
-
-    //minute_hand
-    ctx.beginPath();
-    ctx.strokeStyle = 'black';
-    ctx.lineWidth = 5;
-    ctx.moveTo(0, 0);
-    ctx.lineTo(minuteX, minuteY);
-    ctx.stroke();
-    ctx.closePath();
 
     //clone_minute_hand
     for (let i = 0; i < 3; i++) {
@@ -125,19 +107,10 @@ function clock() {
         ctx.closePath();
     }
 
-    //second_hand
-    ctx.beginPath();
-    ctx.strokeStyle = 'red';
-    ctx.lineWidth = 2;
-    ctx.moveTo(0, 0);
-    ctx.lineTo(secondX, secondY);
-    ctx.stroke();
-    ctx.closePath();
-
     //clone_second_hand
     for (let i = 0; i < 3; i++) {
         ctx.beginPath();
-        ctx.strokeStyle = 'rgb(163, 163, 163)';
+        ctx.strokeStyle = 'rgba(187, 187, 187)';
         ctx.lineWidth = 2;
         switch (i) {
             case 0:
@@ -161,6 +134,33 @@ function clock() {
         ctx.stroke();
         ctx.closePath();
     }
+
+    //hour_hand
+    ctx.beginPath();
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 7;
+    ctx.moveTo(0, 0);
+    ctx.lineTo(hourX, hourY);
+    ctx.stroke();
+    ctx.closePath();
+
+    //minute_hand
+    ctx.beginPath();
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 5;
+    ctx.moveTo(0, 0);
+    ctx.lineTo(minuteX, minuteY);
+    ctx.stroke();
+    ctx.closePath();
+
+    //second_hand
+    ctx.beginPath();
+    ctx.strokeStyle = 'red';
+    ctx.lineWidth = 2;
+    ctx.moveTo(0, 0);
+    ctx.lineTo(secondX, secondY);
+    ctx.stroke();
+    ctx.closePath();
 
     //central_circle
     ctx.beginPath();
