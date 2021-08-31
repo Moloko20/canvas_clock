@@ -48,7 +48,7 @@ function clock() {
 
     //minute_hand
     ctx.beginPath();
-    ctx.strokeStyle = 'blue';
+    ctx.strokeStyle = 'black';
     ctx.lineWidth = 5;
     ctx.moveTo(0, 0);
     ctx.rotate(minuteArc);
@@ -72,6 +72,7 @@ function clock() {
     //central_circle
     ctx.beginPath();
     ctx.fillStyle = 'red';
+    ctx.strokeStyle = 'black';
     ctx.lineWidth = 5;
     ctx.arc(0, 0, 10, 0, 2 * Math.PI);
     ctx.fill();
