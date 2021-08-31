@@ -47,6 +47,25 @@ function clock() {
     ctx.stroke();
     ctx.closePath();
 
+    //clone_hand
+    for (let i = 0; i < 3; i++) {
+        ctx.beginPath();
+        ctx.strokeStyle = 'rgb(163, 163, 163)';
+        ctx.lineWidth = 2;
+        ctx.moveTo(
+            Math.cos(secondArc - Math.PI / 2) * 260,
+            Math.sin(secondArc - Math.PI / 2) * 260
+        );
+        ctx.lineTo(
+            Math.cos(secondArc - Math.PI / 2) * 260 -
+                Math.cos(hourArc + Math.PI / 2) * 100,
+            Math.sin(secondArc - Math.PI / 2) * 260 -
+                Math.sin(hourArc + Math.PI / 2) * 100
+        );
+        ctx.stroke();
+        ctx.closePath();
+    }
+
     //minute_hand
     ctx.beginPath();
     ctx.strokeStyle = 'black';
@@ -58,6 +77,26 @@ function clock() {
     );
     ctx.stroke();
     ctx.closePath();
+
+    //clone_hand
+    for (let i = 0; i < 3; i++) {
+        ctx.beginPath();
+        ctx.strokeStyle = 'rgb(163, 163, 163)';
+        ctx.lineWidth = 2;
+        ctx.moveTo(
+            Math.cos(hourArc - Math.PI / 2) * 100,
+            Math.sin(hourArc - Math.PI / 2) * 100
+        );
+
+        ctx.lineTo(
+            Math.cos(hourArc - Math.PI / 2) * 100 -
+                Math.cos(minuteArc + Math.PI / 2) * 200,
+            Math.sin(hourArc - Math.PI / 2) * 100 -
+                Math.sin(minuteArc + Math.PI / 2) * 200
+        );
+        ctx.stroke();
+        ctx.closePath();
+    }
 
     //second_hand
     ctx.beginPath();
@@ -71,12 +110,71 @@ function clock() {
     ctx.stroke();
     ctx.closePath();
 
+    //clone_hand
+    for (let i = 0; i < 3; i++) {
+        ctx.beginPath();
+        ctx.strokeStyle = 'rgb(163, 163, 163)';
+        ctx.lineWidth = 2;
+        switch (i) {
+            case 0:
+                ctx.moveTo(
+                    Math.cos(hourArc - Math.PI / 2) * 100,
+                    Math.sin(hourArc - Math.PI / 2) * 100
+                );
+                ctx.lineTo(
+                    Math.cos(hourArc - Math.PI / 2) * 100 -
+                        Math.cos(secondArc + Math.PI / 2) * 260,
+                    Math.sin(hourArc - Math.PI / 2) * 100 -
+                        Math.sin(secondArc + Math.PI / 2) * 260
+                );
+                break;
+
+            case 1:
+                ctx.moveTo(
+                    Math.cos(minuteArc - Math.PI / 2) * 200,
+                    Math.sin(minuteArc - Math.PI / 2) * 200
+                );
+                ctx.lineTo(
+                    Math.cos(minuteArc - Math.PI / 2) * 200 -
+                        Math.cos(secondArc + Math.PI / 2) * 260,
+                    Math.sin(minuteArc - Math.PI / 2) * 200 -
+                        Math.sin(secondArc + Math.PI / 2) * 260
+                );
+                break;
+
+            case 2:
+                //
+                break;
+        }
+        ctx.moveTo(
+            Math.cos(hourArc - Math.PI / 2) * 100,
+            Math.sin(hourArc - Math.PI / 2) * 100
+        );
+        ctx.lineTo(
+            Math.cos(hourArc - Math.PI / 2) * 100 -
+                Math.cos(secondArc + Math.PI / 2) * 260,
+            Math.sin(hourArc - Math.PI / 2) * 100 -
+                Math.sin(secondArc + Math.PI / 2) * 260
+        );
+        ctx.stroke();
+        ctx.closePath();
+    }
+
     //central_circle
     ctx.beginPath();
     ctx.fillStyle = 'red';
     ctx.strokeStyle = 'black';
     ctx.lineWidth = 5;
     ctx.arc(0, 0, 10, 0, 2 * Math.PI);
+    ctx.fill();
+    ctx.stroke();
+    ctx.closePath();
+
+    ctx.beginPath();
+    ctx.fillStyle = 'transparent';
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 1;
+    ctx.arc(0, 0, 260, 0, 2 * Math.PI);
     ctx.fill();
     ctx.stroke();
     ctx.closePath();
