@@ -28,6 +28,21 @@ function clock() {
     const hour = (date.getHours() % 12) + minute / 60;
     const hourArc = (hour * Math.PI) / 6;
 
+    const hourX = Math.cos(hourArc - Math.PI / 2) * 100;
+    const hourY = Math.sin(hourArc - Math.PI / 2) * 100;
+    const hourCopyX = Math.cos(hourArc + Math.PI / 2) * 100;
+    const hourCopyY = Math.sin(hourArc + Math.PI / 2) * 100;
+
+    const minuteX = Math.cos(minuteArc - Math.PI / 2) * 200;
+    const minuteY = Math.sin(minuteArc - Math.PI / 2) * 200;
+    const minuteCopyX = Math.cos(minuteArc + Math.PI / 2) * 200;
+    const minuteCopyY = Math.sin(minuteArc + Math.PI / 2) * 200;
+
+    const secondX = Math.cos(secondArc - Math.PI / 2) * 260;
+    const secondY = Math.sin(secondArc - Math.PI / 2) * 260;
+    const secondCopyX = Math.cos(secondArc + Math.PI / 2) * 260;
+    const secondCopyY = Math.sin(secondArc + Math.PI / 2) * 260;
+
     ctx.clearRect(
         -ctx.canvas.width / 2,
         -ctx.canvas.height / 2,
@@ -40,10 +55,7 @@ function clock() {
     ctx.strokeStyle = 'black';
     ctx.lineWidth = 7;
     ctx.moveTo(0, 0);
-    ctx.lineTo(
-        Math.cos(hourArc - Math.PI / 2) * 100,
-        Math.sin(hourArc - Math.PI / 2) * 100
-    );
+    ctx.lineTo(hourX, hourY);
     ctx.stroke();
     ctx.closePath();
 
@@ -54,29 +66,13 @@ function clock() {
         ctx.lineWidth = 2;
         switch (i) {
             case 0:
-                ctx.moveTo(
-                    Math.cos(secondArc - Math.PI / 2) * 260,
-                    Math.sin(secondArc - Math.PI / 2) * 260
-                );
-                ctx.lineTo(
-                    Math.cos(secondArc - Math.PI / 2) * 260 -
-                        Math.cos(hourArc + Math.PI / 2) * 100,
-                    Math.sin(secondArc - Math.PI / 2) * 260 -
-                        Math.sin(hourArc + Math.PI / 2) * 100
-                );
+                ctx.moveTo(secondX, secondY);
+                ctx.lineTo(secondX - hourCopyX, secondY - hourCopyY);
                 break;
 
             case 1:
-                ctx.moveTo(
-                    Math.cos(minuteArc - Math.PI / 2) * 200,
-                    Math.sin(minuteArc - Math.PI / 2) * 200
-                );
-                ctx.lineTo(
-                    Math.cos(minuteArc - Math.PI / 2) * 200 -
-                        Math.cos(hourArc + Math.PI / 2) * 100,
-                    Math.sin(minuteArc - Math.PI / 2) * 200 -
-                        Math.sin(hourArc + Math.PI / 2) * 100
-                );
+                ctx.moveTo(minuteX, minuteY);
+                ctx.lineTo(minuteX - hourCopyX, minuteY - hourCopyY);
                 break;
 
             case 2:
@@ -93,10 +89,7 @@ function clock() {
     ctx.strokeStyle = 'black';
     ctx.lineWidth = 5;
     ctx.moveTo(0, 0);
-    ctx.lineTo(
-        Math.cos(minuteArc - Math.PI / 2) * 200,
-        Math.sin(minuteArc - Math.PI / 2) * 200
-    );
+    ctx.lineTo(minuteX, minuteY);
     ctx.stroke();
     ctx.closePath();
 
@@ -107,31 +100,15 @@ function clock() {
         ctx.lineWidth = 2;
         switch (i) {
             case 0:
-                ctx.moveTo(
-                    Math.cos(hourArc - Math.PI / 2) * 100,
-                    Math.sin(hourArc - Math.PI / 2) * 100
-                );
+                ctx.moveTo(hourX, hourY);
 
-                ctx.lineTo(
-                    Math.cos(hourArc - Math.PI / 2) * 100 -
-                        Math.cos(minuteArc + Math.PI / 2) * 200,
-                    Math.sin(hourArc - Math.PI / 2) * 100 -
-                        Math.sin(minuteArc + Math.PI / 2) * 200
-                );
+                ctx.lineTo(hourX - minuteCopyX, hourY - minuteCopyY);
                 break;
 
             case 1:
-                ctx.moveTo(
-                    Math.cos(secondArc - Math.PI / 2) * 260,
-                    Math.sin(secondArc - Math.PI / 2) * 260
-                );
+                ctx.moveTo(secondX, secondY);
 
-                ctx.lineTo(
-                    Math.cos(secondArc - Math.PI / 2) * 260 -
-                        Math.cos(minuteArc + Math.PI / 2) * 200,
-                    Math.sin(secondArc - Math.PI / 2) * 260 -
-                        Math.sin(minuteArc + Math.PI / 2) * 200
-                );
+                ctx.lineTo(secondX - minuteCopyX, secondY - minuteCopyY);
                 break;
 
             case 2:
@@ -148,10 +125,7 @@ function clock() {
     ctx.strokeStyle = 'red';
     ctx.lineWidth = 2;
     ctx.moveTo(0, 0);
-    ctx.lineTo(
-        Math.cos(secondArc - Math.PI / 2) * 260,
-        Math.sin(secondArc - Math.PI / 2) * 260
-    );
+    ctx.lineTo(secondX, secondY);
     ctx.stroke();
     ctx.closePath();
 
@@ -162,33 +136,18 @@ function clock() {
         ctx.lineWidth = 2;
         switch (i) {
             case 0:
-                ctx.moveTo(
-                    Math.cos(hourArc - Math.PI / 2) * 100,
-                    Math.sin(hourArc - Math.PI / 2) * 100
-                );
-                ctx.lineTo(
-                    Math.cos(hourArc - Math.PI / 2) * 100 -
-                        Math.cos(secondArc + Math.PI / 2) * 260,
-                    Math.sin(hourArc - Math.PI / 2) * 100 -
-                        Math.sin(secondArc + Math.PI / 2) * 260
-                );
+                ctx.moveTo(hourX, hourY);
+                ctx.lineTo(hourX - secondCopyX, hourY - secondCopyY);
                 break;
 
             case 1:
-                ctx.moveTo(
-                    Math.cos(minuteArc - Math.PI / 2) * 200,
-                    Math.sin(minuteArc - Math.PI / 2) * 200
-                );
-                ctx.lineTo(
-                    Math.cos(minuteArc - Math.PI / 2) * 200 -
-                        Math.cos(secondArc + Math.PI / 2) * 260,
-                    Math.sin(minuteArc - Math.PI / 2) * 200 -
-                        Math.sin(secondArc + Math.PI / 2) * 260
-                );
+                ctx.moveTo(minuteX, minuteY);
+                ctx.lineTo(minuteX - secondCopyX, minuteY - secondCopyY);
                 break;
 
             case 2:
-                //
+                ctx.moveTo(hourX - minuteCopyX, hourY - minuteCopyY);
+                ctx.lineTo(minuteX - secondCopyX, minuteY - secondCopyY);
                 break;
         }
         ctx.stroke();
