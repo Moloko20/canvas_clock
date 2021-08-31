@@ -40,10 +40,11 @@ function clock() {
     ctx.strokeStyle = 'black';
     ctx.lineWidth = 7;
     ctx.moveTo(0, 0);
-    ctx.rotate(hourArc);
-    ctx.lineTo(0, -100);
+    ctx.lineTo(
+        Math.cos(hourArc - Math.PI / 2) * 100,
+        Math.sin(hourArc - Math.PI / 2) * 100
+    );
     ctx.stroke();
-    ctx.rotate(-hourArc);
     ctx.closePath();
 
     //minute_hand
@@ -51,22 +52,23 @@ function clock() {
     ctx.strokeStyle = 'black';
     ctx.lineWidth = 5;
     ctx.moveTo(0, 0);
-    ctx.rotate(minuteArc);
-    ctx.lineTo(0, -200);
+    ctx.lineTo(
+        Math.cos(minuteArc - Math.PI / 2) * 200,
+        Math.sin(minuteArc - Math.PI / 2) * 200
+    );
     ctx.stroke();
-    ctx.rotate(-minuteArc);
     ctx.closePath();
 
     //second_hand
-
     ctx.beginPath();
     ctx.strokeStyle = 'red';
     ctx.lineWidth = 2;
     ctx.moveTo(0, 0);
-    ctx.rotate(secondArc);
-    ctx.lineTo(0, -260);
+    ctx.lineTo(
+        Math.cos(secondArc - Math.PI / 2) * 260,
+        Math.sin(secondArc - Math.PI / 2) * 260
+    );
     ctx.stroke();
-    ctx.rotate(-secondArc);
     ctx.closePath();
 
     //central_circle
