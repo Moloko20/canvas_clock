@@ -21,27 +21,24 @@ function clock() {
 
     const second = date.getSeconds() + date.getMilliseconds() / 1000;
     const secondArc = (second * Math.PI) / 30;
+    const secondX = Math.cos(secondArc - Math.PI / 2) * 260;
+    const secondY = Math.sin(secondArc - Math.PI / 2) * 260;
+    const secondCopyX = Math.cos(secondArc + Math.PI / 2) * 260;
+    const secondCopyY = Math.sin(secondArc + Math.PI / 2) * 260;
 
     const minute = date.getMinutes() + second / 60;
     const minuteArc = (minute * Math.PI) / 30;
-
-    const hour = (date.getHours() % 12) + minute / 60;
-    const hourArc = (hour * Math.PI) / 6;
-
-    const hourX = Math.cos(hourArc - Math.PI / 2) * 100;
-    const hourY = Math.sin(hourArc - Math.PI / 2) * 100;
-    const hourCopyX = Math.cos(hourArc + Math.PI / 2) * 100;
-    const hourCopyY = Math.sin(hourArc + Math.PI / 2) * 100;
-
     const minuteX = Math.cos(minuteArc - Math.PI / 2) * 200;
     const minuteY = Math.sin(minuteArc - Math.PI / 2) * 200;
     const minuteCopyX = Math.cos(minuteArc + Math.PI / 2) * 200;
     const minuteCopyY = Math.sin(minuteArc + Math.PI / 2) * 200;
 
-    const secondX = Math.cos(secondArc - Math.PI / 2) * 260;
-    const secondY = Math.sin(secondArc - Math.PI / 2) * 260;
-    const secondCopyX = Math.cos(secondArc + Math.PI / 2) * 260;
-    const secondCopyY = Math.sin(secondArc + Math.PI / 2) * 260;
+    const hour = (date.getHours() % 12) + minute / 60;
+    const hourArc = (hour * Math.PI) / 6;
+    const hourX = Math.cos(hourArc - Math.PI / 2) * 100;
+    const hourY = Math.sin(hourArc - Math.PI / 2) * 100;
+    const hourCopyX = Math.cos(hourArc + Math.PI / 2) * 100;
+    const hourCopyY = Math.sin(hourArc + Math.PI / 2) * 100;
 
     ctx.clearRect(
         -ctx.canvas.width / 2,
