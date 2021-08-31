@@ -28,17 +28,17 @@ function clock() {
 
     const minute = date.getMinutes() + second / 60;
     const minuteArc = (minute * Math.PI) / 30;
-    const minuteX = Math.cos(minuteArc - Math.PI / 2) * 200;
-    const minuteY = Math.sin(minuteArc - Math.PI / 2) * 200;
-    const minuteCopyX = Math.cos(minuteArc + Math.PI / 2) * 200;
-    const minuteCopyY = Math.sin(minuteArc + Math.PI / 2) * 200;
+    const minuteX = Math.cos(minuteArc - Math.PI / 2) * 210;
+    const minuteY = Math.sin(minuteArc - Math.PI / 2) * 210;
+    const minuteCopyX = Math.cos(minuteArc + Math.PI / 2) * 210;
+    const minuteCopyY = Math.sin(minuteArc + Math.PI / 2) * 210;
 
     const hour = (date.getHours() % 12) + minute / 60;
     const hourArc = (hour * Math.PI) / 6;
-    const hourX = Math.cos(hourArc - Math.PI / 2) * 100;
-    const hourY = Math.sin(hourArc - Math.PI / 2) * 100;
-    const hourCopyX = Math.cos(hourArc + Math.PI / 2) * 100;
-    const hourCopyY = Math.sin(hourArc + Math.PI / 2) * 100;
+    const hourX = Math.cos(hourArc - Math.PI / 2) * 150;
+    const hourY = Math.sin(hourArc - Math.PI / 2) * 150;
+    const hourCopyX = Math.cos(hourArc + Math.PI / 2) * 150;
+    const hourCopyY = Math.sin(hourArc + Math.PI / 2) * 150;
 
     ctx.clearRect(
         -ctx.canvas.width / 2,
@@ -73,7 +73,11 @@ function clock() {
                 break;
 
             case 2:
-                //
+                ctx.moveTo(hourX - secondCopyX, hourY - secondCopyY);
+                ctx.lineTo(
+                    minuteX - secondCopyX + hourX,
+                    minuteY - secondCopyY + hourY
+                );
                 break;
         }
 
@@ -109,7 +113,11 @@ function clock() {
                 break;
 
             case 2:
-                //
+                ctx.moveTo(secondX - minuteCopyX, secondY - minuteCopyY);
+                ctx.lineTo(
+                    minuteX - secondCopyX + hourX,
+                    minuteY - secondCopyY + hourY
+                );
                 break;
         }
 
@@ -144,7 +152,10 @@ function clock() {
 
             case 2:
                 ctx.moveTo(hourX - minuteCopyX, hourY - minuteCopyY);
-                ctx.lineTo(minuteX - secondCopyX, minuteY - secondCopyY);
+                ctx.lineTo(
+                    minuteX - secondCopyX + hourX,
+                    minuteY - secondCopyY + hourY
+                );
                 break;
         }
         ctx.stroke();
